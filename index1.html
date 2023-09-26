@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagatan_Christine_Act2</title>
+</head>
+<body>
+    <h1>ID Number and Name</h1>
+
+    <form id="infoForm">
+        <div>
+            <label for="idNumber">ID Number:</label>
+            <input type="text" id="idNumber" required>
+        </div>
+
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+        </div>
+
+        <button type="button" id="addButton">Add</button>
+        <button type="button" id="clearButton">Clear</button>
+    </form>
+
+    <h2>Added Information:</h2>
+    <ul id="outputList"></ul>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightslategray;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button#addButton {
+            background-color: #28a745;
+        }
+
+        button[type="button"] {
+            background-color: #dc3545;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        const form = document.getElementById('infoForm');
+        const idNumberInput = document.getElementById('idNumber');
+        const nameInput = document.getElementById('name');
+        const outputList = document.getElementById('outputList');
+        const addButton = document.getElementById('addButton');
+        const clearButton = document.getElementById('clearButton');
+
+        addButton.addEventListener('click', function() {
+            const idNumber = idNumberInput.value;
+            const name = nameInput.value;
+
+            if (idNumber && name) {
+    
+                const listItem = document.createElement('li');
+                listItem.textContent = `ID: ${idNumber}, Name: ${name}`;
+
+             
+                outputList.appendChild(listItem);
+
+    
+                idNumberInput.value = '';
+                nameInput.value = '';
+            } else {
+                alert('Please enter both ID Number and Name.');
+            }
+        });
+
+        clearButton.addEventListener('click', function() {
+ 
+            while (outputList.firstChild) {
+                outputList.removeChild(outputList.firstChild);
+            }
+        });
+    </script>
+</body>
+</html>
